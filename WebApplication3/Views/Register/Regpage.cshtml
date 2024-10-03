@@ -1,0 +1,101 @@
+﻿@model WebApplication3.Models.Regclass
+
+
+    <h1 class="mb-4">Registration Form</h1>
+<form asp-controller="RegisterController" asp-action="Regpage" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label" asp-for="Name">Name:</label>
+            <input type="text" asp-for="Name" class="form-control">
+            <span asp-validation-for="Name"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Age">Age:</label>
+            <input type="number" asp-for="Age" class="form-control">
+            <span asp-validation-for="Age"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="PhoneNumber">Phone Number:</label>
+            <input type="tel" class="form-control" asp-for="PhoneNumber" id="phoneNumber" name="phoneNumber" required>
+            <span asp-validation-for="PhoneNumber"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Email">Email:</label>
+            <input type="email" class="form-control" asp-for="Email" id="email" name="email" required>
+        <span asp-validation-for="Email">@ViewBag.Emailmsg</span>
+        </div>
+    
+           
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Country">Country:</label>
+            <select id="country" asp-for="Country" name="country" class="form-select" onchange="updateStates()">
+                <option value="" disabled selected>Select Country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+            </select>
+            <span asp-validation-for="Country"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="State">State:</label>
+            <select id="state" asp-for="State" name="state" class="form-select" onchange="updateCities()" required>
+                <option value="" disabled selected>Select State</option>
+                    <option value="State1">State1</option>
+                    <option value="State2">State2</option>
+            </select>
+            <span asp-validation-for="State"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="City">City:</label>
+            <select id="city" asp-for="City" name="city" class="form-select" required>
+                <option value="" disabled selected>Select City</option>
+                    <option value="City1">City1</option>
+                    <option value="City2">City2</option>
+            </select>
+            <span asp-validation-for="City"></span>
+        </div>
+
+            <div class="mb-3">
+                <label class="form-label" asp-for="FileUpload">Upload File:</label>
+                <input type="file" class="form-control" asp-for="FileUpload" id="fileUpload" name="fileUpload">
+                <span class="text-success"> @ViewBag.UploadStatus</span>
+                <span asp-validation-for="FileUpload"></span>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label" asp-for="Password">Password :</label>
+                <input type="tel" class="form-control" asp-for="Password" id="Password" name="Password" required>
+                <span asp-validation-for="Password"></span>
+            </div>
+
+          <div class="mb-3">
+               <label class="form-label" asp-for="ConPassword">Conform Password :</label>
+               <input type="tel" class="form-control" asp-for="ConPassword" id="ConPassword" name="ConPassword" required>
+               <span asp-validation-for="ConPassword"></span>
+           </div>
+
+
+
+
+
+        @* @{
+            string[] hobbies = { "Reading", "Dancing", "Swimming" };
+        }
+
+        @foreach (var hobby in hobbies)
+        {
+            <label>
+                <input type="checkbox" name="Hobbies" value="@hobby" />
+                @hobby
+            </label>
+            <br />
+        } *@
+
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
+
